@@ -98,15 +98,16 @@ export function Login() {
         {<span className={styles.errMsg}>{match}</span>}
       <div className={styles.formContainer}>
       <form className={styles.formLog} onSubmit={handleSubmit}>
-      <BsTwitter style={{color:"white"}}/>
+      <BsTwitter style={{color:"#05BFDB",fontWeight:'bold',fontSize:'1.5rem'}}/>
 
         <h2 className={styles.headSign}>Sign in to twitter</h2>
 
-        <button className={styles.btn}><FcGoogle />Sign in with Google</button>
-        <button className={styles.btn}><BsApple />Sign in with Apple</button>
+        <button className={styles.btnd}><FcGoogle />Sign in with Google</button>
+        <button className={styles.btnd}><BsApple />Sign in with Apple</button>
 
-        <span className={styles.hr}/>
-
+        {/* <span className={styles.hr}/> */}
+        <span>_________________ <span>or</span>__________________</span>
+ 
 
         {/* <TextField
           required
@@ -144,7 +145,7 @@ export function Login() {
         />
         {<span className={styles.errMsg}>{passError}</span>}
 
-        <button className={styles.btn} type="submit">Login</button>
+        <button className={styles.loginBtn} type="submit">Login</button>
 
         <button className={styles.btnd}>Forgot password?</button>
         <p className={styles.noAcc}>Don't have an account?<span onClick={()=>navigate('/register')} className={styles.signup}>Sign up</span></p>

@@ -20,16 +20,17 @@ export function Create() {
     return (
         <div className={styles.main}>
             <div className={styles.btnContainer}>
-                <BsTwitter style={{color:"white"}}/>
+                <BsTwitter style={{color:"#05BFDB",fontSize:'1.5rem'}}/>
                 <h2 className={styles.createHead}>Join Twitter today</h2>
 
                 <button className={styles.btn}><FcGoogle />Sign up with Google</button>
 
                 <button className={styles.btn}><BsApple/>Sign up with Apple</button>
                 
-                <span className={styles.hr}></span>
+                {/* <span className={styles.hr}></span> */}
+                <span>_________________ <span>or</span>__________________</span>  
                 <div className={styles.termsdiv}>
-                <button onClick={handleCreate} className={styles.btn}>Create account</button>
+                <button onClick={handleCreate} className={styles.btnAccount}>Create account</button>
                 {/* <div className={styles.termsdiv}> */}
                 <p className={styles.terms}>By signing up, you agree to the<span className={styles.conditions}>Terms of Service</span> 
                 and <span className={styles.conditions}>Privacy Policy</span>, including <span className={styles.conditions}>Cookie Use</span></p>

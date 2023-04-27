@@ -18,18 +18,25 @@ import {
   registeredState, 
   createState} from "../../atoms/atoms";
 
+
+ 
+
 export function Register() {
   const create = useRecoilValue(createState);
+
   const [registered, setRegistered] = useRecoilState(registeredState);
+
   const [name, setName] = useRecoilState(nameState);
   const [email, setEmail] = useRecoilState(emailState);
   const [date, setDate] = useRecoilState(dateState);
   const [mobile, setMobile] = useRecoilState(mobileState);
   const [password, setPassword] = useRecoilState(passwordState);
+  
   const [nameError, setNameError] = useRecoilState(nameErrorState);
   const [emailError, setEmailError] = useRecoilState(emailErrorState);
   const [mobileError, setMobileError] = useRecoilState(mobileErrorState);
   const [passError, setPassError] = useRecoilState(passErrorState);
+
 
   const navigate = useNavigate();
 
@@ -188,6 +195,8 @@ export function Register() {
             placeholder="DOB"
             className={styles.inputReg}
           />
+         
+      
           {/* {<span className={styles.errMsg}>{nameError}</span>} */}
 
           <input
