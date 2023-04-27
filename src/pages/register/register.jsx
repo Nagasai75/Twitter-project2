@@ -1,11 +1,11 @@
 // import { useState } from "react";
 import { getUsers } from "../../utils/localStorage";
 import styles from "./register.module.css";
-import {BsTwitter} from 'react-icons/bs'
+import { BsTwitter } from 'react-icons/bs'
 import { useRecoilState, useRecoilValue } from "recoil";
 import { Create } from "./create";
 import { useNavigate } from "react-router-dom";
-import { 
+import {
   nameState,
   emailState,
   dateState,
@@ -15,11 +15,15 @@ import {
   emailErrorState,
   mobileErrorState,
   passErrorState,
-  registeredState, 
-  createState} from "../../atoms/atoms";
+  registeredState,
+  createState
+} from "../../atoms/atoms";
+
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 
- 
+
 
 export function Register() {
   const create = useRecoilValue(createState);
@@ -31,7 +35,7 @@ export function Register() {
   const [date, setDate] = useRecoilState(dateState);
   const [mobile, setMobile] = useRecoilState(mobileState);
   const [password, setPassword] = useRecoilState(passwordState);
-  
+
   const [nameError, setNameError] = useRecoilState(nameErrorState);
   const [emailError, setEmailError] = useRecoilState(emailErrorState);
   const [mobileError, setMobileError] = useRecoilState(mobileErrorState);
@@ -138,7 +142,7 @@ export function Register() {
         localStorage.setItem("users", JSON.stringify(users));
         navigate('/login')
       }
-      
+
     }
     setName("");
     setEmail("");
@@ -151,74 +155,87 @@ export function Register() {
     <div className={styles.Regcontainer}>
 
 
-    {/* <Create /> */}
+      {/* <Create /> */}
 
-    {
+      {
         create ? <Create /> : <div>
 
-            <span className={styles.errReg}>{registered}</span>
-      <div className={styles.formContainer}>
-        <form className={styles.formReg} onSubmit={handleSubmit}>
-          <BsTwitter style={{color:"white"}}/>
-          <h2 className={styles.headReg}>Create your account</h2>
-          <input
-            type="text"
-            onChange={(e) => setName(e.target.value)}
-            value={name}
-            placeholder="name"
-            className={styles.inputReg}
-          />
-          {<span className={styles.errMsg}>{nameError}</span>}
+          <span className={styles.errReg}>{registered}</span>
 
-          <input
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            placeholder="email"
-            className={styles.inputReg}
-          />
-          {<span className={styles.errMsg}>{emailError}</span>}
 
-          <input
-            type="number"
-            onChange={(e) => setMobile(e.target.value)}
-            value={mobile}
-            placeholder="Phone"
-            className={styles.inputReg}
-          />
-          {<span className={styles.errMsg}>{mobileError}</span>}
 
-          <input
-            type="date"
-            onChange={(e) => setDate(e.target.value)}
-            value={date}
-            placeholder="DOB"
-            className={styles.inputReg}
-          />
-         
-      
-          {/* {<span className={styles.errMsg}>{nameError}</span>} */}
+          <div className={styles.formContainer}>
+            <form className={styles.formReg} onSubmit={handleSubmit}>
+              <BsTwitter style={{ color: "white" }} />
+              <h2 className={styles.headReg}>Create your account</h2>
 
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            placeholder="password"
-            className={styles.inputReg}
-          />
-          {<span className={styles.errMsg}>{passError}</span>}
+              <TextField
+                id="outlined-password-input"
+                label="Name"
+                type="text"
+                value={name}
+                autoComplete="current-password"
+                onChange={(e) => setName(e.target.value)}
+                className={styles.inputReg}
+              />
+              {<span className={styles.errMsg}>{nameError}</span>}
 
-          <button className={styles.btnReg} type="submit">
-            Create
-          </button>
-        </form>
-      </div>
+
+              <TextField
+                id="outlined-password-input"
+                label="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                autoComplete="current-password"
+                className={styles.inputReg}
+              />
+              {<span className={styles.errMsg}>{emailError}</span>}
+
+              <TextField
+                id="outlined-password-input"
+                label="Phone"
+                value={mobile}
+                onChange={(e) => setMobile(e.target.value)}
+                type="email"
+                autoComplete="current-password"
+                className={styles.inputReg}
+              />
+              {<span className={styles.errMsg}>{mobileError}</span>}
+
+              <TextField
+                id="outlined-password-input"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                type="date"
+                autoComplete="current-password"
+                className={styles.inputReg}
+              />
+              <span></span>
+              <TextField
+                id="outlined-password-input"
+                value={password}
+                label="password"
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                autoComplete="current-password"
+                className={styles.inputReg}
+              />
+              {<span className={styles.errMsg}>{passError}</span>}
+
+
+              <button className={styles.btnReg} type="submit">
+                Create
+              </button>
+
+            </form>
+          </div>
         </div>
-    }
+      }
 
 
 
-      
+
     </div>
   );
 }
