@@ -1,17 +1,17 @@
+
+
 .main {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: rgb(49, 48, 48); */
     height: 97vh;
+   
 }
 
 .btnContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* border: 1px solid white; */
-    /* background-color: black; */
     background-color: white;
     border-radius: 10px;
     gap: 1.5rem;
@@ -22,20 +22,21 @@
     width: 20vw;
     height: 6vh;
     border: none;
-    /* background-color: white; */
     color:black;
     background-color: white;
     border:1px solid grey;
     border-radius: 20px;
     font-weight: 700;
     font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    gap:0.5rem;
+    justify-content: center;
+    align-items: center;
 }
 .btnAccount {
     width: 20vw;
     height: 6vh;
     border: none;
-    /* background-color: white; */
-    /* color:black; */
     background-color: black;
     color:white;
     border-radius: 20px;
@@ -44,7 +45,6 @@
 }
 
 .createHead {
-    /* color: white; */
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 900;
     width: 20vw;
@@ -74,7 +74,6 @@
 }
 
 .haveAccP {
-    /* text-align: left; */
     margin: 0;
     padding: 0;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -89,4 +88,70 @@
 .login {
     color: rgb(38, 81, 173);
     cursor: pointer;
-}
+} 
+
+
+/* For screens smaller than 600px */
+@media only screen and (max-width: 600px) {
+    .btnContainer {
+      width: 80vw;
+      padding: 1rem;
+    }
+    .btn {
+      width: 60vw;
+    }
+    .btnAccount{
+        width:60vw;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .btnContainer {
+      width: 90vw;
+    }
+    
+    .termsdiv {
+      width: 90%;
+      text-align: center;
+      margin-top: 1rem;
+    }
+  
+    .terms {
+      margin-top: 1rem;
+      text-align: center;
+    }
+  
+    .haveAcc {
+      text-align: center;
+      margin-top: 1rem;
+    }
+  }
+  
+  
+  /* For screens between 600px and 1024px */
+  @media only screen and (min-width: 600px) and (max-width: 1024px) {
+    .btnContainer {
+      width: 50vw;
+    }
+    .btn {
+      width: 40vw;
+    }
+    .btnAccount{
+        width:40vw;
+    }
+  }
+  
+  /* For screens larger than 1024px */
+  @media only screen and (min-width: 1024px) {
+    .btnContainer {
+      width: 25vw;
+    }
+    .btn {
+      width: 20vw;
+    }
+    .btnAccount{
+        width:20vw;
+    }
+  }
+
+  
