@@ -30,10 +30,11 @@ export default function Tweet() {
   return (
     <div
       style={{
-        border: "1px solid  rgb(192, 187, 187)",
+        borderTop: "3px solid #f7f9f9",
+       
         boxShadow: "",
         display: "flex",
-        width: "39vw",
+        width: "100%",
         height: "27vh",
         paddingRight: "7px",
 
@@ -89,45 +90,33 @@ export default function Tweet() {
             EveryOne Can Reply
           </div>
         </div>
-       <hr/>
+        <hr />
         <div
           style={{
-            
             display: "flex",
             justifyContent: "space-between",
-            
-            
-            
           }}
         >
           <div
             style={{
               display: "flex",
               justifyContent: "space-between",
-            
+
               width: "15vw",
               marginTop: "0.5rem",
               padding: "0.2rem",
             }}
           >
-            <SlPicture
-              style={{ color: "1da1f2", fontSize: "20px" }}
-            />
-            <MdOutlineGifBox
-              style={{ color: "1da1f2", fontSize: "20px" }}
-            />
-            <MdOutlinePoll
-              style={{ color: "1da1f2", fontSize: "20px" }}
-            />
+            <SlPicture style={{ color: "1da1f2", fontSize: "20px" }} />
+            <MdOutlineGifBox style={{ color: "1da1f2", fontSize: "20px" }} />
+            <MdOutlinePoll style={{ color: "1da1f2", fontSize: "20px" }} />
             <SentimentSatisfiedAltIcon
               style={{ color: "1da1f2", fontSize: "20px" }}
             />
             <FmdGoodOutlinedIcon
               style={{ color: "1da1f2", fontSize: "20px" }}
             />
-            <AiOutlineSchedule
-              style={{ color: "1da1f2", fontSize: "20px" }}
-            />
+            <AiOutlineSchedule style={{ color: "1da1f2", fontSize: "20px" }} />
           </div>
           <div>
             <button
