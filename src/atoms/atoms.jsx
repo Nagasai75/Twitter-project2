@@ -60,3 +60,13 @@ export const matchState = atom({
     key: "matchState",
     default: ""
 })
+
+export const tweets = atom({
+  key: "tweets",
+  default: [],
+});
+
+export const images = atom({
+  key: "images",
+  default: [],
+});
