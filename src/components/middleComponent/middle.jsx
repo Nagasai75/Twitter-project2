@@ -54,7 +54,7 @@ export default function InstagramPost({ details }) {
     <Card
       
       sx={{
-        width: "37vw",
+        width: "100%",
         height: "auto",
         
       }}

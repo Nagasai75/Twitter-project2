@@ -6,6 +6,13 @@ import Tweet from "../../components/tweet/tweet";
 import { tweets } from "../../atoms/atoms";
 import { useEffect } from "react";
 import MiddleFirst from "../../components/middleFirst/middleFirst";
+///*******md components******** */
+
+import Trends from "../../Components/Trends/Trend";
+import Search from "../../Components/Search/Search";
+import FollowComponent from "../../Components/FollowComponent/Follow";
+///*******md components******** */
+
 export function Home() {
   const [tweet, setTweets] = useRecoilState(tweets);
  
@@ -19,15 +26,46 @@ export function Home() {
       .then((data) => setTweets(data));
   }
     console.log("tweets............", tweet);
-
+    function Sidebart(){
+      return(
+        <div style={{border:"1px solid",height:"100vh",width:"315px"}}></div>
+      )
+    }
   return (
-    <div >
-      <MiddleFirst/>
-      <Tweet />
-    {tweet.map((e)=>
-       <InstagramPost details={e} />
-    )}
-      
+    <div style={{ display: "flex" }}>
+      <div>
+        {" "}
+        <Sidebart />
+      </div>
+      <div style={{ width: "600px" }}>
+        <div style={{ border: "3px solid #f7f9f9" }}>
+        
+            <MiddleFirst  />
+          
+          <Tweet />
+        </div>
+
+        {tweet.map((e) => (
+          <InstagramPost details={e} />
+        ))}
+      </div>
+      <div>
+        <Search />
+        <Trends />
+        <FollowComponent />
+      </div>
     </div>
   );
 }
+  // <>
+  //     <div>
+        //  <MiddleFirst />
+        // <Tweet />
+        // {tweet.map((e) => (
+        //   <InstagramPost details={e} />
+        // ))}
+  //     </div>
+      // <Search />
+      // <Trends />
+      // <FollowComponent />
+  //   </>
