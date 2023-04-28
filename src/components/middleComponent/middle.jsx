@@ -15,10 +15,10 @@ import SendOutlined from "@mui/icons-material/SendOutlined";
 import Face from "@mui/icons-material/Face";
 import BookmarkBorderRoundedIcon from "@mui/icons-material/BookmarkBorderRounded";
 import { height } from "@mui/system";
-import { AiOutlineRetweet } from "react-icons/Ai";
+import { AiOutlineRetweet } from "react-icons/ai";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { BiBarChart } from "react-icons/Bi";
+import { BiBarChart } from "react-icons/bi";
 import MapsUgcOutlinedIcon from "@mui/icons-material/MapsUgcOutlined";
 import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
 
