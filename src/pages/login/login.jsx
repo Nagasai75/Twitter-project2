@@ -2,9 +2,8 @@
 import { getUsers } from "../../utils/localStorage";
 // import { useRecoilState } from "recoil";
 import styles from './login.module.css';
-import {FcGoogle} from 'react-icons/fc'
-import {BsApple} from 'react-icons/bs'
-import {BsTwitter} from 'react-icons/bs'
+
+
 import { useNavigate } from "react-router-dom";
 import { 
   emailState,
