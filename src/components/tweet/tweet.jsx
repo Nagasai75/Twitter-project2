@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { SlPicture } from "react-icons/Sl";
 import { MdOutlineGifBox } from "react-icons/Md";
 import { MdOutlinePoll } from "react-icons/Md";
-import { images } from "../../atoms/atoms";
+
 import { AiOutlineSchedule } from "react-icons/Ai";
 import { GrLocation } from "react-icons/Gr";
 import Button from "@mui/material/Button";
@@ -12,20 +12,43 @@ import { useEffect } from "react";
 import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
 import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
+import EmojiPicker from "emoji-picker-react";
+import { SkinTones } from "emoji-picker-react";
+import { useRecoilState } from "recoil";
+import { recoilImage } from "../../atoms/atoms";
+
+import {AvatarImage} from "../../atoms/atoms";
+
 
 export default function Tweet() {
   const [random, setRandom] = useState(Math.floor(Math.random() * 50));
+  const [isSee, isSetsee] = useState(false);
+  const [images, setImages] = useRecoilState(recoilImage);
+  const [emoji, setEmoji] = useState("");
+  const [Arrayemoji, setArrayEmoji] = useState([]);
+  const [InputArrayemoji, InputsetArrayEmoji] = useState("");
+  const [AvatarState, setAvatarState] = useRecoilState(AvatarImage);
 
-  const [images, setImages] = useState([]);
+
   useEffect(() => {
     dataFetch();
+   
   }, []);
+ 
   function dataFetch() {
-    fetch("http://localhost:3000/users")
+    fetch("./users.json")
       .then((r) => r.json())
-      .then((data) => setImages(data));
+      .then((data) =>{ setImages(data);
+         setAvatarState(data[random]?.image)
+         
+      });
+      
   }
   console.log("images............", images);
+  const inputref = React.useRef();
+  function handleIcon1() {
+    inputref.current.click();
+  }
 
   return (
     <div
@@ -45,7 +68,7 @@ export default function Tweet() {
         <Avatar
           sx={{ marginTop: "5px", marginLeft: "4px" }}
           alt="Remy Sharp"
-          src={images.length && images[random].image}
+          src={AvatarState}
         />
       </div>
       <div
@@ -58,7 +81,11 @@ export default function Tweet() {
       >
         <div style={{ marginTop: "4px", paddingTop: "0.2rem" }}>
           <input
+            onChange={(e) => {
+              setArrayEmoji([...Arrayemoji, e.target.value]);
+            }}
             type="textarea"
+            value={Arrayemoji.join("")}
             style={{
               width: "30vw",
               height: "8vh",
@@ -107,17 +134,26 @@ export default function Tweet() {
               padding: "0.2rem",
             }}
           >
-            <SlPicture style={{ color: "1da1f2", fontSize: "20px" }} />
+            <input ref={inputref} type="file" hidden />
+            <SlPicture
+              onClick={handleIcon1}
+              style={{ color: "1da1f2", fontSize: "20px" }}
+            />
             <MdOutlineGifBox style={{ color: "1da1f2", fontSize: "20px" }} />
             <MdOutlinePoll style={{ color: "1da1f2", fontSize: "20px" }} />
             <SentimentSatisfiedAltIcon
+              onClick={() => {
+                isSetsee(!isSee);
+              }}
               style={{ color: "1da1f2", fontSize: "20px" }}
             />
+
             <FmdGoodOutlinedIcon
               style={{ color: "1da1f2", fontSize: "20px" }}
             />
             <AiOutlineSchedule style={{ color: "1da1f2", fontSize: "20px" }} />
           </div>
+
           <div>
             <button
               style={{
@@ -136,6 +172,27 @@ export default function Tweet() {
           </div>
         </div>
       </div>
+      {isSee && (
+        <span
+          style={{
+            zIndex: "1",
+            marginTop: "10px",
+            position: "absolute",
+            top: "300px",
+          }}
+        >
+          <EmojiPicker
+            emojiStyle="twitter"
+            skinTonesDisabled={false}
+            height={500}
+            width={400}
+            onEmojiClick={(data) => {
+              setEmoji(data.emoji);
+              setArrayEmoji([...Arrayemoji, emoji]);
+            }}
+          />
+        </span>
+      )}
     </div>
   );
 }

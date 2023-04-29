@@ -9,10 +9,20 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Grid, Avatar } from "@mui/material";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import Button from "@mui/material/Button";
-import Chip from "@mui/material/Chip";
+import "./Sidebar.css"
 import Stack from "@mui/material/Stack";
+import Modal from "@mui/material/Modal";
+import { useRecoilValue } from "recoil";
+import { AvatarImage } from "../../atoms/atoms";
+import Tweet from "../../components/tweet/tweet";
+
 
 const Sidebar = () => {
+  const holder = useRecoilValue(AvatarImage);
+   const [open, setOpen] = React.useState(false);
+   const handleOpen = () => setOpen(true);
+   const handleClose = () => setOpen(false);
+
   const data = [
     {
       icon: <HomeIcon />,
@@ -71,9 +81,7 @@ const Sidebar = () => {
             <TwitterIcon
               sx={{
                 fontSize: 40,
-                "&:hover": {
-                  backgroundColor: "lightGrey",
-                },
+                
               }}
             />
           </Avatar>
@@ -87,6 +95,7 @@ const Sidebar = () => {
                 <span>
                   {" "}
                   <h3
+                    className="sidebarbtn"
                     style={{
                       borderRadius: 10,
                       cursor: "pointer",
@@ -97,10 +106,7 @@ const Sidebar = () => {
                       color: "black",
                       textTransform: "none",
                       gap: "12px",
-                      "&:hover": {
-                        backgroundColor: "rgb(231, 233, 234)",
-                        opacity: [0.9, 0.8, 0.7],
-                      },
+
                       fontSize: "1.3rem",
                       fontWeight: 550,
                     }}
@@ -119,6 +125,7 @@ const Sidebar = () => {
         <Grid>
           <Stack direction="column" spacing={10}>
             <button
+              onClick={handleOpen}
               style={{
                 marginRight: "20px",
                 width: "200px",
@@ -132,6 +139,28 @@ const Sidebar = () => {
             >
               Tweet
             </button>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <div
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: 500,
+                  backgroundColor: "white",
+                  border: "1px solid 1da1f2 ",
+                  boxShadow: 26,
+                  padding:"6px",
+                }}
+              >
+                <Tweet />
+              </div>
+            </Modal>
             <Button
               variant="contained"
               color="grey"
@@ -144,7 +173,7 @@ const Sidebar = () => {
                 },
               }}
             >
-              <Avatar>T</Avatar> username
+              <Avatar src={holder}></Avatar> username
             </Button>
           </Stack>
         </Grid>

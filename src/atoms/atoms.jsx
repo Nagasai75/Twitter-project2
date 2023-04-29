@@ -66,7 +66,11 @@ export const tweets = atom({
   default: [],
 });
 
-export const images = atom({
-  key: "images",
+export const recoilImage = atom({
+  key: "recoilImage",
   default: [],
+});
+export const AvatarImage = atom({
+  key: "AvatarImage",
+  default: "",
 });
