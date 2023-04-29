@@ -11,6 +11,7 @@ import MiddleFirst from "../../components/middleFirst/middleFirst";
 import Trends from "../../Components/Trends/Trend";
 import Search from "../../Components/Search/Search";
 import FollowComponent from "../../Components/FollowComponent/Follow";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 ///*******md components******** */
 
 export function Home() {
@@ -35,7 +36,8 @@ export function Home() {
     <div style={{ display: "flex" }}>
       <div>
         {" "}
-        <Sidebart />
+       
+        <Sidebar/>
       </div>
       <div style={{ width: "600px" }}>
         <div style={{ border: "3px solid #f7f9f9" }}>

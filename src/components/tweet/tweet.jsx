@@ -15,7 +15,7 @@ import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 
 export default function Tweet() {
   const [random, setRandom] = useState(Math.floor(Math.random() * 50));
-  
+
   const [images, setImages] = useState([]);
   useEffect(() => {
     dataFetch();
@@ -31,7 +31,7 @@ export default function Tweet() {
     <div
       style={{
         borderTop: "3px solid #f7f9f9",
-       
+
         boxShadow: "",
         display: "flex",
         width: "100%",
