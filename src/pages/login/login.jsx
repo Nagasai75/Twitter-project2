@@ -20,16 +20,16 @@ import {
 } from "../../atoms/atoms";
 import { useRecoilState } from "recoil";
 import Divider from '@mui/material/Divider';
-import TextField from '@mui/material/TextField';
 
-// import TextField from '@mui/material/TextField';
+
+
 
 export function Login() {
-  //   const [name, setName] = useState("");
+
   const [email, setEmail] = useRecoilState(emailState);
   const [password, setPassword] = useRecoilState(passwordState)
 
-  //   const [nameError, setNameError] = useState("");
+
   const [emailError, setEmailError] = useRecoilState(emailErrorState)
   const [passError, setPassError] = useRecoilState(passErrorState)
   const [match, setMatch] = useRecoilState(matchState)
@@ -38,19 +38,15 @@ export function Login() {
 
 
   function validateUserEmail() {
-    const regex = /^\S+@\S+\.\S+$/;
-
     if (!email) {
-      setEmailError('email is required');
-      return false;
-    } else if (!regex.test(email)) {
-      setEmailError("It should be a valid email address");
+      setEmailError('email/phone/username is required');
       return false;
     } else {
       setEmailError('');
       return true;
     }
   }
+
 
   function validatePassword() {
     const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,20}$/;
@@ -67,11 +63,12 @@ export function Login() {
     }
   }
 
+  
 
   function handleSubmit(e) {
     e.preventDefault();
+    
 
-    // const isUserNameValid = validateUserName()
     const isUserEmailValid = validateUserEmail()
     const isUserPasswordValid = validatePassword()
 
@@ -79,12 +76,12 @@ export function Login() {
 
     if (isUserEmailValid && isUserPasswordValid) {
       let details = users.find((user) => (
-        user.email === email && user.password === password
+        (user.email === email || user.name === email || user.mobile === email) && user.password === password
       ))
 
       if (details && isUserEmailValid && isUserPasswordValid) {
         let user = users.filter((user) => {
-          if (user.email === email) {
+          if (user.email === email || user.name === email || user.mobile === email) {
             user.isLogin = true
           }
           return user
@@ -95,72 +92,60 @@ export function Login() {
         setMatch('Please Register')
       }
     }
-    // setName('');
     setEmail('');
     setPassword('')
   }
 
   return (
     <div className={styles.loginContainer}>
-    <div className={styles.Logcontainer}>
+      <div className={styles.Logcontainer}>
 
-      {<span className={styles.errMsg}>{match}</span>}
-      <div className={styles.formContainer}>
-        <form className={styles.formLog} onSubmit={handleSubmit}>
-          <div>
-          <BsTwitter style={{ color: "#05BFDB",fontSize:'1.5rem' }} />
-          </div>
-         
+        {<span className={styles.errMsg}>{match}</span>}
+        <div className={styles.formContainer}>
+          <form className={styles.formLog} onSubmit={handleSubmit}>
+            <div>
+              <BsTwitter style={{ color: "#1D9BF0", fontSize: '1.5rem' }} />
+            </div>
+            <h2 className={styles.headSign}>Sign in to twitter</h2>
+            <button className={styles.btnd}><FcGoogle />Sign in with Google</button>
+            <button className={styles.btnd}><BsApple />Sign in with Apple</button>
 
-          <h2 className={styles.headSign}>Sign in to twitter</h2>
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+              <span style={{ flexGrow: 1, width: '11vw' }}>
+                <Divider />
+              </span>
+              <span style={{ margin: '0 8px' }}>or</span>
+              <span style={{ flexGrow: 1, width: '11vw' }}>
+                <Divider />
+              </span>
+            </div>
 
-          <button className={styles.btnd}><FcGoogle />Sign in with Google</button>
-          <button className={styles.btnd}><BsApple />Sign in with Apple</button>
+            <input
+              type="text"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              placeholder="Phone,email,or username"
+              className={styles.inputlog}
 
-    
-          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-            <span style={{ flexGrow: 1, width: '9vw' }}>
-              <Divider />
-            </span>
-            <span style={{ margin: '0 8px' }}>or</span>
-            <span style={{ flexGrow: 1, width: '9vw' }}>
-              <Divider />
-            </span>
-          </div>
+            />
+            {<span className={styles.errMsg}>{emailError}</span>}
 
+            <input
+              type='password'
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              placeholder="Password"
+              className={styles.inputlog}
+            />
+            {<span className={styles.errMsg}>{passError}</span>}
 
-
-          {/* {<span className={styles.errMsg}>{nameError}</span>} */}
-
-          <input
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            placeholder="email"
-            className={styles.inputlog}
-            
-          />
-          
-          {<span className={styles.errMsg}>{emailError}</span>}
-          
-          <input
-            type='password'
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            placeholder="password"
-            className={styles.inputlog}
-          />
-          
-
-          {<span className={styles.errMsg}>{passError}</span>}
-
-          <button className={styles.loginBtn} type="submit">Login</button>
-
-          <button className={styles.btnd}>Forgot password?</button>
-          <p className={styles.noAcc}>Don't have an account?<span onClick={() => navigate('/register')} className={styles.signup}>Sign up</span></p>
-        </form>
+            <button className={styles.loginBtn} type="submit">Login</button>
+           
+            <button className={styles.loginBtn}>Forgot password?</button>
+            <p className={styles.noAcc}>Don't have an account?<span onClick={() => navigate('/register')} className={styles.signup}>Sign up</span></p>
+          </form>
+        </div>
       </div>
-    </div>
     </div>
   );
 }

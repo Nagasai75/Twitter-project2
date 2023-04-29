@@ -21,7 +21,7 @@ export function Create() {
     return (
         <div className={styles.main}>
             <div className={styles.btnContainer}>
-                <BsTwitter style={{ color: "#05BFDB", fontSize: '1.5rem' }} />
+                <BsTwitter style={{ color: "#1D9BF0", fontSize: '1.5rem' }} />
                 <h2 className={styles.createHead}>Join Twitter today</h2>
 
                 <button className={styles.btn}><FcGoogle />Sign up with Google</button>
