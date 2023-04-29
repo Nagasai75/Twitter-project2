@@ -33,14 +33,14 @@ export function Home() {
       )
     }
   return (
-    <div style={{ display: "flex" }}>
-      <div>
+    <div style={{ display: "flex"}}>
+      <div style={{flex:'1'}}>
         {" "}
        
         <Sidebar/>
       </div>
-      <div style={{ width: "600px" }}>
-        <div style={{ border: "3px solid #f7f9f9" }}>
+      <div style={{ width: "600px",display:'flex',flex:'3' }}>
+        <div style={{ border: "3px solid #f7f9f9", }}>
         
             <MiddleFirst  />
           
@@ -51,7 +51,7 @@ export function Home() {
           <InstagramPost details={e} />
         ))}
       </div>
-      <div>
+      <div style={{display:'flex',flex:'1',flexDirection:'column'}}>
         <Search />
         <Trends />
         <FollowComponent />
