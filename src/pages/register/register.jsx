@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 import { getUsers } from "../../utils/localStorage";
 import styles from "./register.module.css";
 import { BsTwitter } from 'react-icons/bs'
@@ -21,6 +21,7 @@ import {
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { Stack } from "@mui/material";
 
 
 
@@ -29,7 +30,7 @@ export function Register() {
   const create = useRecoilValue(createState);
 
   const [registered, setRegistered] = useRecoilState(registeredState);
-
+  const [showEmail, setShowEmail] = useState(false);
   const [name, setName] = useRecoilState(nameState);
   const [email, setEmail] = useRecoilState(emailState);
   const [date, setDate] = useRecoilState(dateState);
@@ -110,20 +111,30 @@ export function Register() {
     }
   }
 
+  function showEmailInput() {
+    if (!showEmail) {
+      setShowEmail(true)
+    } else {
+      setShowEmail(false);
+    }
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
 
     const isUserNameValid = validateUserName();
-    const isUserEmailValid = validateUserEmail();
-    const isUserPasswordValid = validatePassword();
-    const isMobileValid = validateMobile();
 
-    if (
-      isUserNameValid &&
-      isUserEmailValid &&
-      isMobileValid &&
-      isUserPasswordValid
-    ) {
+    const isUserPasswordValid = validatePassword();
+    let isEmailValid;
+    let isMobileValid;
+
+    if (showEmail) {
+      isEmailValid = validateUserEmail();
+    } else {
+      isMobileValid = validateMobile();
+    }
+
+    if (isUserNameValid && (showEmail ? isEmailValid : isMobileValid) && isUserPasswordValid) {
       const users = getUsers();
       const check = users.some((user) => user.email === email);
 
@@ -181,28 +192,48 @@ export function Register() {
               {<span className={styles.errMsg}>{nameError}</span>}
 
 
-              <TextField
-                id="outlined-password-input"
-                label="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                type="email"
-                autoComplete="current-password"
-                className={styles.inputReg}
-              />
-              {<span className={styles.errMsg}>{emailError}</span>}
+              {
+                showEmail ? (
+                  <>
+                    <TextField
+                      id="outlined-password-input"
+                      label="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      type="email"
+                      autoComplete="current-password"
+                      className={styles.inputReg}
 
-              <TextField
-                id="outlined-password-input"
-                label="Phone"
-                value={mobile}
-                onChange={(e) => setMobile(e.target.value)}
-                type="email"
-                autoComplete="current-password"
-                className={styles.inputReg}
-              />
-              {<span className={styles.errMsg}>{mobileError}</span>}
+                    />
+                    {<span className={styles.errMsg}>{emailError}</span>}
 
+                  </>
+                ) : (
+                  <>
+                    <TextField
+                      id="outlined-password-input"
+                      label="Phone"
+                      value={mobile}
+                      onChange={(e) => setMobile(e.target.value)}
+                      type="tel"
+                      autoComplete="current-password"
+                      className={styles.inputReg}
+                    />
+                    {<span className={styles.errMsg}>{mobileError}</span>}
+                  </>
+                )
+              }
+
+              <span onClick={showEmailInput} className={styles.swapPhone}>
+                {showEmail
+                  ? "Use Phone Number Instead "
+                  : " Use Email Instead"}
+              </span>
+
+              <div>
+                <h5>Date of birth</h5>
+                <small>This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.</small>
+              </div>
               <TextField
                 id="outlined-password-input"
                 value={date}

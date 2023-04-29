@@ -1,10 +1,11 @@
 .Regcontainer {
     display: flex;
     flex-direction: column;
-    background-color: aliceblue;
+    background-color: #1D9BF0;
     min-height: 98vh;
     align-items: center;
     justify-content: center;
+    height:100vh;
 }
 
 .formReg {
@@ -37,6 +38,8 @@
 .headReg {
     font-weight: 900;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: left;
+    width:100%;
 }
 
 .btnReg {
@@ -49,6 +52,7 @@
     font-weight: 900;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 1rem;
+    cursor: pointer;
 }
 
 .errMsg {
@@ -56,25 +60,20 @@
     font-size: .8rem;
 }
 
-
-
-
-
-
-
-@media (min-width:320px) {
-    .Regcontainer {
-        flex-direction: row;
-    }
-
-    .formReg {
-        max-width: none;
-        width: 50%;
-        height: auto;
-        padding: 2rem 4rem;
-    }
-   
+.swapPhone {
+    display: block;
+    /* border:2px solid green; */
+    text-align: end;
+    width:100%;
+    cursor: pointer;
+    color: #1D9BF0;
 }
+
+.swapPhone:hover {
+    text-decoration: underline;
+}
+
+
 
 @media (min-width: 768px) {
     .Regcontainer {
