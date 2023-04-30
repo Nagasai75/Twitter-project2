@@ -14,6 +14,8 @@ import FollowComponent from "../../Components/FollowComponent/Follow";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 ///*******md components******** */
 
+
+
 export function Home() {
   const [tweet, setTweets] = useRecoilState(tweets);
  
@@ -33,13 +35,14 @@ export function Home() {
       )
     }
   return (
-    <div style={{ display: "flex"}}>
-      <div style={{flex:'1'}}>
+    <div style={{ display: "flex"}} >
+      {/* <div className={homeStyle.home}> */}
+      <div style={{flex:'1'}} >
         {" "}
        
         <Sidebar/>
       </div>
-      <div style={{ width: "600px",display:'flex',flex:'3' }}>
+      <div style={{ width: "600px",display:'flex',flex:'3' }} >
         <div style={{ border: "3px solid #f7f9f9", }}>
         
             <MiddleFirst  />
@@ -51,7 +54,9 @@ export function Home() {
           <InstagramPost details={e} />
         ))}
       </div>
-      <div style={{display:'flex',flex:'1',flexDirection:'column'}}>
+      {/* </div> */}
+
+      <div style={{display:'flex',flex:'1',flexDirection:'column'}} >
         <Search />
         <Trends />
         <FollowComponent />
