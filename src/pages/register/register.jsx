@@ -46,7 +46,7 @@ export function Register() {
 
 
   function validateUserName() {
-    const regex = /^[a-zA-Z0-9_]{5,16}$/;
+    const regex = /^[a-zA-Z]{5,16}$/;
 
     if (!name) {
       setNameError("Name is required");
@@ -197,7 +197,7 @@ export function Register() {
                 label="Phone"
                 value={mobile}
                 onChange={(e) => setMobile(e.target.value)}
-                type="email"
+                type=""
                 autoComplete="current-password"
                 className={styles.inputReg}
               />

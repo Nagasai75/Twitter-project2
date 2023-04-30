@@ -9,19 +9,30 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Grid, Avatar } from "@mui/material";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import Button from "@mui/material/Button";
-import "./Sidebar.css"
+import "./Sidebar.css";
 import Stack from "@mui/material/Stack";
 import Modal from "@mui/material/Modal";
 import { useRecoilValue } from "recoil";
 import { AvatarImage } from "../../atoms/atoms";
 import Tweet from "../../components/tweet/tweet";
 
-
 const Sidebar = () => {
   const holder = useRecoilValue(AvatarImage);
-   const [open, setOpen] = React.useState(false);
-   const handleOpen = () => setOpen(true);
-   const handleClose = () => setOpen(false);
+  const [open, setOpen] = React.useState(false);
+  
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  
+
+  let store = JSON.parse(localStorage.getItem("users"));
+   let userdetail;
+   store.map((user)=>{
+     if(user.isLogin){
+       userdetail = user;
+      
+     }
+   })
+  
 
   const data = [
     {
@@ -81,7 +92,6 @@ const Sidebar = () => {
             <TwitterIcon
               sx={{
                 fontSize: 40,
-                
               }}
             />
           </Avatar>
@@ -118,9 +128,11 @@ const Sidebar = () => {
                     ----- we will do this when we have to add links  of respective paths */}
                   </h3>
                 </span>
+              
               </div>
             );
           })}
+          
         </Grid>
         <Grid>
           <Stack direction="column" spacing={10}>
@@ -155,7 +167,7 @@ const Sidebar = () => {
                   backgroundColor: "white",
                   border: "1px solid 1da1f2 ",
                   boxShadow: 26,
-                  padding:"6px",
+                  padding: "6px",
                 }}
               >
                 <Tweet />
@@ -173,12 +185,13 @@ const Sidebar = () => {
                 },
               }}
             >
-              <Avatar src={holder}></Avatar> username
+              <Avatar sx={{marginRight:"8px"}} src={holder}></Avatar> {userdetail.name}
             </Button>
           </Stack>
         </Grid>
       </Grid>
     </Stack>
+    
   );
 };
 
