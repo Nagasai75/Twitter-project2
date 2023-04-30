@@ -13,7 +13,9 @@
   background-color: white;
   border-radius: 10px;
   gap: 1.5rem;
-  width: 25vw;
+  /* width: 25vw; */
+  /* width:90%; */
+  width: 40vw;
   padding: 2rem;
 }
 
@@ -103,6 +105,11 @@
   cursor: pointer;
 }
 
+.closeCreateButton {
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+}
 
 /* For screens smaller than 600px */
 @media only screen and (max-width: 600px) {
@@ -143,6 +150,8 @@
     margin-top: 1rem;
   }
 }
+
+
 
 /* @media only screen and (min-width:768px) and (max-width:1024px) */
 

@@ -1,10 +1,15 @@
+
+
 // import { useState } from "react";
 import { getUsers } from "../../utils/localStorage";
 // import { useRecoilState } from "recoil";
 import styles from './login.module.css';
+import { useEffect } from 'react';
 
 
 
+// import CloseIcon from '@mui/icons-material/Close';
+import { LoginState } from "../../atoms/atoms";
 
 import { FcGoogle } from 'react-icons/fc'
 import { BsApple } from 'react-icons/bs'
@@ -18,8 +23,9 @@ import {
   passErrorState,
   matchState
 } from "../../atoms/atoms";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import Divider from '@mui/material/Divider';
+// import { currentUser } from "../../atoms/atoms";
 
 
 
@@ -27,15 +33,23 @@ import Divider from '@mui/material/Divider';
 export function Login() {
 
   const [email, setEmail] = useRecoilState(emailState);
-  const [password, setPassword] = useRecoilState(passwordState)
-
+  const [password, setPassword] = useRecoilState(passwordState);
+  const [loginState, setLoginState] = useRecoilState(LoginState);
 
   const [emailError, setEmailError] = useRecoilState(emailErrorState)
   const [passError, setPassError] = useRecoilState(passErrorState)
   const [match, setMatch] = useRecoilState(matchState)
+  // const [currentUser,setCurrentUser] =useRecoilState(currentUser);
 
   const navigate = useNavigate();
 
+
+  useEffect(() => {
+    if (loginState) {
+      localStorage.setItem("userlogin", JSON.stringify(true));
+      navigate('/');
+    }
+  }, []);
 
   function validateUserEmail() {
     if (!email) {
@@ -63,11 +77,11 @@ export function Login() {
     }
   }
 
-  
+
 
   function handleSubmit(e) {
     e.preventDefault();
-    
+
 
     const isUserEmailValid = validateUserEmail()
     const isUserPasswordValid = validatePassword()
@@ -87,7 +101,16 @@ export function Login() {
           return user
         })
         localStorage.setItem('users', JSON.stringify(user))
-        navigate('/')
+
+
+        setLoginState(true);
+        // navigate('/')
+
+        // if (loginState === true) {
+          localStorage.setItem("userlogin", JSON.stringify(true));
+          navigate('/')
+        // }
+
       } else {
         setMatch('Please Register')
       }
@@ -102,6 +125,7 @@ export function Login() {
 
         {<span className={styles.errMsg}>{match}</span>}
         <div className={styles.formContainer}>
+          {/* <span className={styles.closeButton} onClick={(e) => navigate('/')}><CloseIcon /></span> */}
           <form className={styles.formLog} onSubmit={handleSubmit}>
             <div>
               <BsTwitter style={{ color: "#1D9BF0", fontSize: '1.5rem' }} />
@@ -140,12 +164,37 @@ export function Login() {
             {<span className={styles.errMsg}>{passError}</span>}
 
             <button className={styles.loginBtn} type="submit">Login</button>
-           
-            <button className={styles.loginBtn}>Forgot password?</button>
-            <p className={styles.noAcc}>Don't have an account?<span onClick={() => navigate('/register')} className={styles.signup}>Sign up</span></p>
+            <h4 className={styles.loginBtn} type='text'
+              style={{
+                width: '100%', textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'
+              }}>Forgot password?</h4>
+            <p className={styles.noAcc}>Don't have an account?<span onClick={() => navigate('/sign-up')} className={styles.signup}>Sign up</span></p>
           </form>
         </div>
       </div>
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

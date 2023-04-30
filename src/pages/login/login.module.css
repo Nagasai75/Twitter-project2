@@ -5,6 +5,7 @@
     align-items: center;
     height: 100vh;
     background-color: #1D9BF0;
+  
 }
 
 
@@ -135,6 +136,14 @@
 .inputlog:focus{
     border: 2px solid #1D9BF0;
     outline:none;
+}
+
+.closeButton {
+    /* font-weight: 300; */
+    cursor: pointer;  
+    text-align: start;
+    width:100%;
+    
 }
 
 /* Responsive styles */
