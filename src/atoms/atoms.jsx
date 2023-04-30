@@ -71,6 +71,17 @@ export const recoilImage = atom({
   default: [],
 });
 
+
+export const LoginState = atom({
+    key: "LoginState",
+    default : JSON.parse(localStorage.getItem("userlogin")) || false,
+})
+
+export const currentUser = atom({
+  key: "currentUser",
+  default : JSON.parse(localStorage.getItem("currentUser")) || [],
+})
+
 export const AvatarImage = atom({
   key: "AvatarImage",
   default: "",

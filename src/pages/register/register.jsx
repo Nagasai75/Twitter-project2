@@ -22,14 +22,13 @@ import {
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Stack } from "@mui/material";
+// import CloseIcon from '@mui/icons-material/Close';
 
 
 
 
 export function Register() {
   const create = useRecoilValue(createState);
-
-  const [registered, setRegistered] = useRecoilState(registeredState);
   const [showEmail, setShowEmail] = useState(false);
   const [name, setName] = useRecoilState(nameState);
   const [email, setEmail] = useRecoilState(emailState);
@@ -136,10 +135,17 @@ export function Register() {
 
     if (isUserNameValid && (showEmail ? isEmailValid : isMobileValid) && isUserPasswordValid) {
       const users = getUsers();
-      const check = users.some((user) => user.email === email);
+      // const check = users.find((user) => user.email === email);
+      const check = users.find((user) => {
+        if (showEmail) {
+          return user.email === email;
+        } else {
+          return user.mobile === mobile;
+        }
+      });
 
       if (check) {
-        setRegistered("user already registered");
+        alert("User already registered")
       } else {
         users.push({
           id: Date.now(),
@@ -164,111 +170,100 @@ export function Register() {
 
   return (
     <div className={styles.Regcontainer}>
-
-
-      {/* <Create /> */}
-
       {
-        create ? <Create /> : <div>
 
-          <span className={styles.errReg}>{registered}</span>
+        create ?
+          <Create />
+          :
+          <div>
+            <div className={styles.formContainer}>
+              <form className={styles.formReg} onSubmit={handleSubmit}>
+                {/* <span className={styles.closeRegisterButton} onClick={(e) => navigate('/')}><CloseIcon /></span> */}
 
+                <BsTwitter style={{ color: "white" }} />
+                <h2 className={styles.headReg}>Create your account</h2>
+                <TextField
+                  id="outlined-password-input"
+                  label="Name"
+                  type="text"
+                  value={name}
+                  autoComplete="current-password"
+                  onChange={(e) => setName(e.target.value)}
+                  className={styles.inputReg}
+                />
+                {<span className={styles.errMsg}>{nameError}</span>}
+                {
+                  showEmail ? (
+                    <>
+                      <TextField
+                        id="outlined-password-input"
+                        label="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        type="email"
+                        autoComplete="current-password"
+                        className={styles.inputReg}
 
+                      />
+                      {<span className={styles.errMsg}>{emailError}</span>}
 
-          <div className={styles.formContainer}>
-            <form className={styles.formReg} onSubmit={handleSubmit}>
-              <BsTwitter style={{ color: "white" }} />
-              <h2 className={styles.headReg}>Create your account</h2>
+                    </>
+                  ) : (
+                    <>
+                      <TextField
+                        id="outlined-password-input"
+                        label="Phone"
+                        value={mobile}
+                        onChange={(e) => setMobile(e.target.value)}
+                        type="tel"
+                        autoComplete="current-password"
+                        className={styles.inputReg}
+                      />
+                      {<span className={styles.errMsg}>{mobileError}</span>}
+                    </>
+                  )
+                }
 
-              <TextField
-                id="outlined-password-input"
-                label="Name"
-                type="text"
-                value={name}
-                autoComplete="current-password"
-                onChange={(e) => setName(e.target.value)}
-                className={styles.inputReg}
-              />
-              {<span className={styles.errMsg}>{nameError}</span>}
+                <span onClick={showEmailInput} className={styles.swapPhone}>
+                  {showEmail
+                    ? "Use Phone Number Instead "
+                    : " Use Email Instead"}
+                </span>
 
-
-
-              {
-                showEmail ? (
-                  <>
-                    <TextField
-                      id="outlined-password-input"
-                      label="Email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      type="email"
-                      autoComplete="current-password"
-                      className={styles.inputReg}
-
-                    />
-                    {<span className={styles.errMsg}>{emailError}</span>}
-
-                  </>
-                ) : (
-                  <>
-                    <TextField
-                      id="outlined-password-input"
-                      label="Phone"
-                      value={mobile}
-                      onChange={(e) => setMobile(e.target.value)}
-                      type="tel"
-                      autoComplete="current-password"
-                      className={styles.inputReg}
-                    />
-                    {<span className={styles.errMsg}>{mobileError}</span>}
-                  </>
-                )
-              }
-
-              <span onClick={showEmailInput} className={styles.swapPhone}>
-                {showEmail
-                  ? "Use Phone Number Instead "
-                  : " Use Email Instead"}
-              </span>
-
-              <div>
-                <h5>Date of birth</h5>
-                <small>This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.</small>
-              </div>
-
-              <TextField
-                id="outlined-password-input"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                type="date"
-                autoComplete="current-password"
-                className={styles.inputReg}
-              />
-              <span></span>
-              <TextField
-                id="outlined-password-input"
-                value={password}
-                label="password"
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                autoComplete="current-password"
-                className={styles.inputReg}
-              />
-              {<span className={styles.errMsg}>{passError}</span>}
+                <div>
+                  <h5>Date of birth</h5>
+                  <small>This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.</small>
+                </div>
+                <TextField
+                  id="outlined-password-input"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  type="date"
+                  autoComplete="current-password"
+                  className={styles.inputReg}
+                />
+                <span></span>
+                <TextField
+                  id="outlined-password-input"
+                  value={password}
+                  label="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  type="password"
+                  autoComplete="current-password"
+                  className={styles.inputReg}
+                />
+                {<span className={styles.errMsg}>{passError}</span>}
 
 
-              <button className={styles.btnReg} type="submit">
-                Create
-              </button>
+                <button className={styles.btnReg} type="submit">
+                  Create
+                </button>
 
-            </form>
+              </form>
+            </div>
+
           </div>
-        </div>
       }
-
-
-
-
     </div>
   );
 }

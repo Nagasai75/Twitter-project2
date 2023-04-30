@@ -32,12 +32,14 @@ export function Home() {
    
   return (
 
+
     <div style={{ display: "flex" }}>
       <div className="rightside">
 
         {" "}
         <Sidebar />
       </div>
+
 
       <div style={{ width: "600px" }}>
         <div style={{ border: "3px solid #f7f9f9" }}>
@@ -48,6 +50,7 @@ export function Home() {
 
      
 
+
         </div>
 
         {tweet.map((e) => (
@@ -55,7 +58,9 @@ export function Home() {
         ))}
       </div>
 
+
       <div className="rightside">
+
 
         <Search />
         <Trends />
