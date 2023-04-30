@@ -21,7 +21,7 @@ export default function Tweet() {
     dataFetch();
   }, []);
   function dataFetch() {
-    fetch("http://localhost:3000/users")
+    fetch("./users.json")
       .then((r) => r.json())
       .then((data) => setImages(data));
   }
