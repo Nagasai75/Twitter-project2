@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { SlPicture } from "react-icons/Sl";
-import { MdOutlineGifBox } from "react-icons/Md";
-import { MdOutlinePoll } from "react-icons/Md";
 
-import { AiOutlineSchedule } from "react-icons/Ai";
-import { GrLocation } from "react-icons/Gr";
+
+
+import { SlPicture } from "react-icons/sl";
+import { MdOutlineGifBox } from "react-icons/md";
+import { MdOutlinePoll } from "react-icons/md";
+import { images } from "../../atoms/atoms";
+import { AiOutlineSchedule } from "react-icons/ai";
+import { GrLocation } from "react-icons/gr";
+
 import Button from "@mui/material/Button";
 import Avatar from "@mui/joy/Avatar";
 import { TextField } from "@mui/material";

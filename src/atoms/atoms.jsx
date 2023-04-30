@@ -70,7 +70,9 @@ export const recoilImage = atom({
   key: "recoilImage",
   default: [],
 });
+
 export const AvatarImage = atom({
   key: "AvatarImage",
   default: "",
 });
+

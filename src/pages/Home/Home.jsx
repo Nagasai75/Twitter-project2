@@ -31,24 +31,32 @@ export function Home() {
    
    
   return (
+
     <div style={{ display: "flex" }}>
       <div className="rightside">
+
         {" "}
         <Sidebar />
       </div>
+
       <div style={{ width: "600px" }}>
         <div style={{ border: "3px solid #f7f9f9" }}>
           <MiddleFirst />
           <div className="middle">
             <Tweet />
           </div>
+
+     
+
         </div>
 
         {tweet.map((e) => (
           <InstagramPost details={e} />
         ))}
       </div>
+
       <div className="rightside">
+
         <Search />
         <Trends />
         <FollowComponent />
