@@ -12,6 +12,10 @@ import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 
+
+
+
+
 const Sidebar = () => {
   const data = [
     {
@@ -64,8 +68,8 @@ const Sidebar = () => {
   };
 
   return (
-    <Stack direction="column" spacing={2} sx={{ padding: "30px" }}>
-      <Grid width="25%" height="100%">
+    <Stack direction="column" spacing={2} sx={{ padding: "30px" }} >
+      <Grid width="25%" height="100%" >
         <Grid>
           <Avatar style={twitterAvatar}>
             <TwitterIcon
@@ -103,10 +107,14 @@ const Sidebar = () => {
                       },
                       fontSize: "1.3rem",
                       fontWeight: 550,
+            
                     }}
                   >
                     {" "}
+                    <div >
                     {ele.icon} {ele.name}
+                    </div>
+                   
                     {/* <Link to={ele.link}>{ele.icon} {ele.name}</Link> 
                     
                     ----- we will do this when we have to add links  of respective paths */}
