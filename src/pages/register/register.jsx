@@ -47,7 +47,7 @@ export function Register() {
 
 
   function validateUserName() {
-    const regex = /^[a-zA-Z0-9_]{5,16}$/;
+    const regex = /^[a-zA-Z]{5,16}$/;
 
     if (!name) {
       setNameError("Name is required");
@@ -192,6 +192,7 @@ export function Register() {
               {<span className={styles.errMsg}>{nameError}</span>}
 
 
+
               {
                 showEmail ? (
                   <>
@@ -234,6 +235,7 @@ export function Register() {
                 <h5>Date of birth</h5>
                 <small>This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.</small>
               </div>
+
               <TextField
                 id="outlined-password-input"
                 value={date}
