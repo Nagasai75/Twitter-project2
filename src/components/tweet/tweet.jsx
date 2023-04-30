@@ -44,6 +44,17 @@ export default function Tweet() {
       });
       
   }
+  function handlelocation(){
+    const successCallback = (position) => {
+      console.log(position);
+    };
+
+    const errorCallback = (error) => {
+      console.log(error);
+    };
+
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  }
   console.log("images............", images);
   const inputref = React.useRef();
   function handleIcon1() {
@@ -148,7 +159,7 @@ export default function Tweet() {
               style={{ color: "1da1f2", fontSize: "20px" }}
             />
 
-            <FmdGoodOutlinedIcon
+            <FmdGoodOutlinedIcon onClick={handlelocation}
               style={{ color: "1da1f2", fontSize: "20px" }}
             />
             <AiOutlineSchedule style={{ color: "1da1f2", fontSize: "20px" }} />
