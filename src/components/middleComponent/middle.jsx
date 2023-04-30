@@ -9,16 +9,12 @@ import IconButton from "@mui/joy/IconButton";
 import Input from "@mui/joy/Input";
 import Typography from "@mui/joy/Typography";
 import MoreHoriz from "@mui/icons-material/MoreHoriz";
-import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
-import ModeCommentOutlined from "@mui/icons-material/ModeCommentOutlined";
-import SendOutlined from "@mui/icons-material/SendOutlined";
-import Face from "@mui/icons-material/Face";
-import BookmarkBorderRoundedIcon from "@mui/icons-material/BookmarkBorderRounded";
-import { height } from "@mui/system";
+
+
 import { AiOutlineRetweet } from "react-icons/ai";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { BiBarChart } from "react-icons/bi";
+import { BiBarChart } from "react-icons/Bi";
 import MapsUgcOutlinedIcon from "@mui/icons-material/MapsUgcOutlined";
 import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
 

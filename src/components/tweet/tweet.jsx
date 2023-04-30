@@ -2,14 +2,14 @@ import React, { useState } from "react";
 
 
 
-import { SlPicture } from "react-icons/sl";
-import { MdOutlineGifBox } from "react-icons/md";
-import { MdOutlinePoll } from "react-icons/md";
-import { images } from "../../atoms/atoms";
-import { AiOutlineSchedule } from "react-icons/ai";
-import { GrLocation } from "react-icons/gr";
+import { SlPicture } from "react-icons/Sl";
+import { MdOutlineGifBox } from "react-icons/Md";
+import { MdOutlinePoll } from "react-icons/Md";
 
-import Button from "@mui/material/Button";
+// import { AiOutlineSchedule } from "react-icons/Ai";
+
+
+
 import Avatar from "@mui/joy/Avatar";
 import { TextField } from "@mui/material";
 import { useEffect } from "react";
@@ -166,7 +166,7 @@ export default function Tweet() {
             <FmdGoodOutlinedIcon onClick={handlelocation}
               style={{ color: "1da1f2", fontSize: "20px" }}
             />
-            <AiOutlineSchedule style={{ color: "1da1f2", fontSize: "20px" }} />
+            {/* <AiOutlineSchedule style={{ color: "1da1f2", fontSize: "20px" }} /> */}
           </div>
 
           <div>

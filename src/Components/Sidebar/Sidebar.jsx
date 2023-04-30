@@ -44,12 +44,15 @@ const Sidebar = () => {
 
   let store = JSON.parse(localStorage.getItem("users"));
   let userdetail;
-  store.map((user)=>{
-    if(user.isLogin){
-      userdetail = user;
-     
-    }
-  })
+
+  if (store) {
+    // add a null check
+    store.map((user) => {
+      if (user.isLogin) {
+        userdetail = user;
+      }
+    });
+  }
 
   console.log(details);
 
@@ -173,7 +176,7 @@ const Sidebar = () => {
         <Grid>
           <Stack direction="column" spacing={10}>
             <button
-              onClick={handleOpen}
+            
               style={{
                 marginRight: "20px",
                 width: "200px",
@@ -222,7 +225,7 @@ const Sidebar = () => {
                   details[0].name.slice(0, 1)}
               </Avatar>{" "}
               {details && details[0] && details[0].name} */}
-                <Avatar sx={{marginRight:"8px"}} src={holder}></Avatar> {userdetail.name}
+                <Avatar sx={{marginRight:"8px"}} src={holder}></Avatar> {userdetail?.name}
               <IconButton onClick={handleClick}>
                 <MoreHoriz />
               </IconButton>
