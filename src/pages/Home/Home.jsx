@@ -22,7 +22,7 @@ export function Home() {
   }, []);
   
   function fetchData() {
-    fetch("http://localhost:3000/tweets?_limit=10")
+    fetch("./tweets.json")
       .then((r) => r.json())
       .then((data) => setTweets(data));
   }
