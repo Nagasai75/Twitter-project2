@@ -20,7 +20,6 @@ function MiddleFirst() {
               fontSize: "20px",
               textTransform: "none",
             }}
-            value="one"
             label="Home"
           />
         </Tabs>
@@ -34,11 +33,11 @@ function MiddleFirst() {
           aria-label="secondary tabs example"
         >
           <Tab
-            value="one"
             label="For You"
+            value="one"
             sx={{ marginRight: "20%", marginLeft: "20%", fontSize: "15px" }}
           />
-          <Tab value="two" label="Following" sx={{ fontSize: "15px" }} />
+          <Tab value="two"  label="Following" sx={{ fontSize: "15px" }} />
         </Tabs>
       </Box>
     </>

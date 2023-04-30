@@ -66,10 +66,11 @@ export const tweets = atom({
   default: [],
 });
 
-export const images = atom({
-  key: "images",
+export const recoilImage = atom({
+  key: "recoilImage",
   default: [],
 });
+
 
 export const LoginState = atom({
     key: "LoginState",
@@ -85,3 +86,4 @@ export const AvatarImage = atom({
   key: "AvatarImage",
   default: "",
 });
+

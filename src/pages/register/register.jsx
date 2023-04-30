@@ -46,7 +46,7 @@ export function Register() {
 
 
   function validateUserName() {
-    const regex = /^[a-zA-Z0-9_]{5,16}$/;
+    const regex = /^[a-zA-Z]{5,16}$/;
 
     if (!name) {
       setNameError("Name is required");
@@ -171,6 +171,7 @@ export function Register() {
   return (
     <div className={styles.Regcontainer}>
       {
+
         create ?
           <Create />
           :
@@ -260,6 +261,7 @@ export function Register() {
 
               </form>
             </div>
+
           </div>
       }
     </div>

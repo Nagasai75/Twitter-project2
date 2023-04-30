@@ -10,8 +10,9 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Grid, Avatar } from "@mui/material";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import Button from "@mui/material/Button";
-import Chip from "@mui/material/Chip";
+import "./Sidebar.css";
 import Stack from "@mui/material/Stack";
+
 import { Menu, MenuItem, IconButton } from "@mui/material";
 import { MoreHoriz } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
@@ -51,6 +52,7 @@ const Sidebar = () => {
   })
 
   console.log(details);
+
   const data = [
     {
       icon: <HomeIcon />,
@@ -126,9 +128,6 @@ const Sidebar = () => {
             <TwitterIcon
               sx={{
                 fontSize: 40,
-                "&:hover": {
-                  backgroundColor: "lightGrey",
-                },
               }}
             />
           </Avatar>
@@ -142,6 +141,7 @@ const Sidebar = () => {
                 <span>
                   {" "}
                   <h3
+                    className="sidebarbtn"
                     style={{
                       borderRadius: 10,
                       cursor: "pointer",
@@ -152,10 +152,7 @@ const Sidebar = () => {
                       color: "black",
                       textTransform: "none",
                       gap: "12px",
-                      "&:hover": {
-                        backgroundColor: "rgb(231, 233, 234)",
-                        opacity: [0.9, 0.8, 0.7],
-                      },
+
                       fontSize: "1.3rem",
                       fontWeight: 550,
                     }}
@@ -167,13 +164,16 @@ const Sidebar = () => {
                     ----- we will do this when we have to add links  of respective paths */}
                   </h3>
                 </span>
+              
               </div>
             );
           })}
+          
         </Grid>
         <Grid>
           <Stack direction="column" spacing={10}>
             <button
+              onClick={handleOpen}
               style={{
                 marginRight: "20px",
                 width: "200px",
@@ -188,6 +188,7 @@ const Sidebar = () => {
               Tweet
             </button>
 
+
             <Menu
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
@@ -196,6 +197,7 @@ const Sidebar = () => {
               <MenuItem onClick={handleClose}>Log out</MenuItem>
               <MenuItem onClick={handleClose}>Add an existing account</MenuItem>
             </Menu>
+
 
             <Button
               // onClick={() => {
@@ -212,6 +214,7 @@ const Sidebar = () => {
                 },
               }}
             >
+
               {/* <Avatar>
                 {details &&
                   details[0] &&
@@ -223,11 +226,13 @@ const Sidebar = () => {
               <IconButton onClick={handleClick}>
                 <MoreHoriz />
               </IconButton>
+
             </Button>
           </Stack>
         </Grid>
       </Grid>
     </Stack>
+    
   );
 };
 
