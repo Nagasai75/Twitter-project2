@@ -50,16 +50,16 @@ export default function Tweet() {
   }
   function handlelocation(){
     const successCallback = (position) => {
-      console.log(position);
+     
     };
 
     const errorCallback = (error) => {
-      console.log(error);
+     
     };
 
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
   }
-  console.log("images............", images);
+ 
   const inputref = React.useRef();
   function handleIcon1() {
     inputref.current.click();

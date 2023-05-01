@@ -20,6 +20,8 @@ import { getUsers } from "../../utils/localStorage";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { LoginState, currentUser } from "../../atoms/atoms";
 import { AvatarImage } from "../../atoms/atoms";
+ import Modal from "@mui/material/Modal";
+ import Tweet from "../../components/tweet/tweet";
 
 const Sidebar = () => {
   const [details, setDetails] = useState([]);
@@ -28,6 +30,11 @@ const Sidebar = () => {
   const [loginState,setLoginState] = useRecoilState(LoginState);
   const holder = useRecoilValue(AvatarImage);
   // const currentUser=useRecoilValue(currentUser);
+ 
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose1 = () => setOpen(false);
 
   useEffect(() => {
     let users = JSON.parse(localStorage.getItem("users")) || [];
@@ -167,16 +174,14 @@ const Sidebar = () => {
                     ----- we will do this when we have to add links  of respective paths */}
                   </h3>
                 </span>
-              
               </div>
             );
           })}
-          
         </Grid>
         <Grid>
           <Stack direction="column" spacing={10}>
             <button
-            
+              onClick={handleOpen}
               style={{
                 marginRight: "20px",
                 width: "200px",
@@ -191,6 +196,28 @@ const Sidebar = () => {
               Tweet
             </button>
 
+            <Modal
+              open={open}
+              onClose={handleClose1}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <div
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: 500,
+                  backgroundColor: "white",
+                  border: "1px solid 1da1f2 ",
+                  boxShadow: 26,
+                  padding: "6px",
+                }}
+              >
+                <Tweet />
+              </div>
+            </Modal>
 
             <Menu
               anchorEl={anchorEl}
@@ -200,7 +227,6 @@ const Sidebar = () => {
               <MenuItem onClick={handleClose}>Log out</MenuItem>
               <MenuItem onClick={handleClose}>Add an existing account</MenuItem>
             </Menu>
-
 
             <Button
               // onClick={() => {
@@ -217,7 +243,6 @@ const Sidebar = () => {
                 },
               }}
             >
-
               {/* <Avatar>
                 {details &&
                   details[0] &&
@@ -225,17 +250,16 @@ const Sidebar = () => {
                   details[0].name.slice(0, 1)}
               </Avatar>{" "}
               {details && details[0] && details[0].name} */}
-                <Avatar sx={{marginRight:"8px"}} src={holder}></Avatar> {userdetail?.name}
+              <Avatar sx={{ marginRight: "8px" }} src={holder}></Avatar>{" "}
+              {userdetail?.name}
               <IconButton onClick={handleClick}>
                 <MoreHoriz />
               </IconButton>
-
             </Button>
           </Stack>
         </Grid>
       </Grid>
     </Stack>
-    
   );
 };
 
