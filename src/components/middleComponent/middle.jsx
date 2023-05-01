@@ -14,7 +14,7 @@ import MoreHoriz from "@mui/icons-material/MoreHoriz";
 import { AiOutlineRetweet } from "react-icons/ai";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { BiBarChart } from "react-icons/Bi";
+import { BiBarChart } from "react-icons/bi";
 import MapsUgcOutlinedIcon from "@mui/icons-material/MapsUgcOutlined";
 import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
 

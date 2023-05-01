@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 
 
-import { SlPicture } from "react-icons/Sl";
-import { MdOutlineGifBox } from "react-icons/Md";
-import { MdOutlinePoll } from "react-icons/Md";
+import { SlPicture } from "react-icons/sl";
+import { MdOutlineGifBox } from "react-icons/md";
+import { MdOutlinePoll } from "react-icons/md";
 
 // import { AiOutlineSchedule } from "react-icons/Ai";
 
